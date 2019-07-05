@@ -6,6 +6,7 @@ APKRepatcher helps you to modify an existing apk using a simple user friendly GU
 Updated to use the latest tools
 Furthermore, now updating it in the future will be a little bit easier.
 ```
+# [You can download APK Patcher v1.1.1 from GitHub Releases](https://github.com/manciuszz/APKRepatcher/releases/download/v1.1.1/APKRepatcher.zip).
 
 # Website (Full Doc/Tutorial/Screenshot):
 https://cooltrickshome.blogspot.in/2017/03/apkrepatcher-now-decompile-recompile.html
