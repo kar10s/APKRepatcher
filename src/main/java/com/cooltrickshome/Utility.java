@@ -1,33 +1,20 @@
 package com.cooltrickshome;
 
-import java.awt.Desktop;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.Toolkit;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import net.lingala.zip4j.ZipFile;
+import net.lingala.zip4j.exception.ZipException;
+import net.lingala.zip4j.model.ZipParameters;
+import org.apache.commons.io.FileUtils;
+
+import javax.swing.*;
+import java.awt.*;
+import java.io.*;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-import javax.swing.JEditorPane;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-
-import org.apache.commons.io.FileUtils;
-import net.lingala.zip4j.core.ZipFile;
-import net.lingala.zip4j.exception.ZipException;
-import net.lingala.zip4j.model.ZipParameters;
-import net.lingala.zip4j.util.Zip4jConstants;
+import static net.lingala.zip4j.model.enums.CompressionLevel.NORMAL;
+import static net.lingala.zip4j.model.enums.CompressionMethod.DEFLATE;
 
 /**
  * Contains methods used for performing conversions
@@ -92,8 +79,8 @@ public class Utility {
 			sfFile.renameTo(new File(getProjectPath() + File.separator
 					+ "META-INF" + File.separator + certificateName + ".SF"));
 			ZipParameters parameters = new ZipParameters();
-			parameters.setCompressionMethod(Zip4jConstants.COMP_DEFLATE);
-			parameters.setCompressionLevel(Zip4jConstants.DEFLATE_LEVEL_NORMAL);
+			parameters.setCompressionMethod(DEFLATE);
+			parameters.setCompressionLevel(NORMAL);
 			zipFile.addFolder(newCertFolder, parameters);
 
 		} catch (ZipException e) {
@@ -153,8 +140,8 @@ public class Utility {
 			List<String> classDex = getClassDexFiles(Utility.getApkSource());
 			ZipParameters parameters = new ZipParameters();
 			parameters.setIncludeRootFolder(false);
-			parameters.setCompressionMethod(Zip4jConstants.COMP_DEFLATE);
-			parameters.setCompressionLevel(Zip4jConstants.DEFLATE_LEVEL_NORMAL);
+			parameters.setCompressionMethod(DEFLATE);
+			parameters.setCompressionLevel(NORMAL);
 			for (String s : classDex) {
 				zipFile.removeFile(s);
 				zipFile.addFile(new File(Utility.getModifiedDex()
@@ -308,7 +295,6 @@ public class Utility {
 	 *            Resulting jar file
 	 * @throws IOException
 	 * @throws InterruptedException
-	 * @throws JadxException
 	 */
 	public static void changeDex2Jar(File dexFile, File outputFile)
 			throws InterruptedException, IOException {
@@ -383,7 +369,7 @@ public class Utility {
 		String[] commands = { "java",heapArg+memoryAllocated+memUnit,"-cp",
 				"."+pathSeparator + getJadLibraryPath() + File.separator + "*",
 				getJadHelperClassName(), "jadx", jarPath.getAbsolutePath(),
-				outputSourceDirectory };
+				outputSourceDirectory, "deobfuscate"};
 		runProgram(commands, getHelperPath());
 	}
 
@@ -737,7 +723,7 @@ public class Utility {
 	 * @return
 	 */
 	public static String getJadHelperClassName() {
-		return "com.cooltrickshome.helper.RunProgramJad";
+		return "jadx.RunProgramJad";
 	}
 
 	/**
@@ -746,7 +732,7 @@ public class Utility {
 	 * @return
 	 */
 	public static String getDexHelperClassName() {
-		return "com.cooltrickshome.helper.RunProgramDex";
+		return "jadx.RunProgramDex";
 	}
 
 	/**

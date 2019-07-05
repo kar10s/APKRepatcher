@@ -1,8 +1,11 @@
-# APKRepatcher
+# APKRepatcher v1.1.1
 
 APKRepatcher helps you to modify an existing apk using a simple user friendly GUI. It lets you edit java/smali code from an APK and rewrite the changes back to the modified signed APK. Additionally, it provides you option to convert Dex, Jar, Class, Smali, Class from one format to another.
 
-If you like this project, feel free to paypal me at cs.anurag.jain@gmail.com :)
+```
+Updated to use the latest tools
+Furthermore, now updating it in the future will be a little bit easier.
+```
 
 # Website (Full Doc/Tutorial/Screenshot):
 https://cooltrickshome.blogspot.in/2017/03/apkrepatcher-now-decompile-recompile.html
@@ -21,5 +24,3 @@ Patch Module using Advanced Section (explained on website) <br/>
 APKRepatcher is created using Java with no os dependency (as far as i think) so you can run it with various OS <br/>
 Allows you to change the amount of memory utilized by APKRepatcher. <br/>
 100% Free 
-
-Please let me know your valuable feedbacks or if you would like to contribute at cs.anurag.jain@gmail.com :)

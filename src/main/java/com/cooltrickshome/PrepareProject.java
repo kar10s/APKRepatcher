@@ -1,8 +1,8 @@
 package com.cooltrickshome;
 
-import java.io.File;
-
 import org.apache.commons.io.FileUtils;
+
+import java.io.File;
 
 /**
  * Helps in preparation of new project
