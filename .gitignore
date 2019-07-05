@@ -151,7 +151,7 @@ modules.xml
 
 # End of https://www.gitignore.io/api/eclipse,intellij+iml
 
-# APKRepatcher ignores
+# ----- APKRepatcher ignores --------
 *.class
 
 # Mobile Tools for Java (J2ME)
@@ -167,4 +167,6 @@ hs_err_pid*
 
 target/
 Projects/**/
-packageTest/
+packaged/
+
+APKRepatcher_lib/helper/classes-error.zip
